@@ -4,6 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 import Home from '../components/Home'
+import Blog from '../components/Blog'
 import About from '../components/About'
 import Detail from '../components/Detail'
 import PostFilter from '../components/PostFilter'
@@ -12,10 +13,15 @@ import DoAdmin from '../components/admin/DoAdmin'
 
 const routes = [
 
-    {path: '/', component: Home, name: 'home'},
-    {path: '/post/:id/', component: Detail, name: 'post_detail'},
-    {path: '/about/', component: About, name: 'about'},
-    {path: '/post-filter/:id/', component: PostFilter, name: 'post_filter'},
+    {
+        path: '/', component: Blog,
+        children: [
+            {path: '/', component: Home, name: 'home'},
+            {path: '/post/:id/', component: Detail, name: 'post_detail'},
+            {path: '/about/', component: About, name: 'about'},
+            {path: '/post-filter/:id/', component: PostFilter, name: 'post_filter'},
+        ]
+    },
 
     {
         path: '/myadmin/',
