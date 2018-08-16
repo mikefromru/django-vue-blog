@@ -4,7 +4,7 @@
             <app-header/>
                 <b-row>
                     <b-col cols-xs="6" md="4"><app-aside/></b-col>
-                        <b-col><router-view/></b-col>
+                        <b-col cols-xs><router-view/></b-col>
                 </b-row>
         </b-container>
     </div>
@@ -12,8 +12,8 @@
 
 <script>
 import Vue from 'vue'
-import Header from './commons/App-header'
-import Aside from './commons/App-aside'
+import Header from '../commons/App-header'
+import Aside from '../commons/App-aside'
 export default {
     name: "Blog",
     components: {

@@ -11,6 +11,9 @@ Vue.use(BootstrapVue)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+import VuePersist from 'vue-persist'
+Vue.use(VuePersist)
+
 axios.defaults.baseURL = 'http://localhost:8000/'
 axios.interceptors.request.use(function (config) {
     const userToken = localStorage.getItem('user-token');
@@ -18,6 +21,11 @@ axios.interceptors.request.use(function (config) {
         return config;
 });
 
+// import Paginate from 'vuejs-paginate'
+// Vue.component('paginate', Paginate)
+
+import VuePaginate from 'vue-paginate'
+Vue.use(VuePaginate)
 
 new Vue({
   el: '#app',

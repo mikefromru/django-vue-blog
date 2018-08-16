@@ -2,7 +2,7 @@
     <div>
         <b-card title="Card Category">
             <div v-for="category in categories" :key="category.id">
-                <router-link :to="{name: 'post_filter', params: {id: category.id}}">{{ category.name }}</router-link>
+                <router-link :to="{name: 'post_categories', params: {id: category.id}}">{{ category.name }}</router-link>
             </div>
         </b-card>
     </div>

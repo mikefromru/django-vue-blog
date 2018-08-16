@@ -3,23 +3,30 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-import Home from '../components/Home'
-import Blog from '../components/Blog'
-import About from '../components/About'
-import Detail from '../components/Detail'
-import PostFilter from '../components/PostFilter'
+//  Blog Blog Blog Blog
+import Blog from '../components/blog/Blog'
+import Detail from '../components/blog/Detail'
+import PostCategories from '../components/blog/PostCategories'
+import BlogFeed from '../components/blog/BlogFeed'
+import SearchResult from '../components/blog/SearchResult'
+
+// Admin Admin Admin
 import AdminIndex from '../components/admin/AdminIndex'
-import DoAdmin from '../components/admin/DoAdmin'
+import BlogFeedAdmin from '../components/admin/BlogFeedAdmin'
+import DetailAdmin from '../components/admin/DetailAdmin'
+
+import About from '../components/About'
 
 const routes = [
 
     {
         path: '/', component: Blog,
         children: [
-            {path: '/', component: Home, name: 'home'},
+            {path: '/:id?', component: BlogFeed, name: 'blog'},
             {path: '/post/:id/', component: Detail, name: 'post_detail'},
             {path: '/about/', component: About, name: 'about'},
-            {path: '/post-filter/:id/', component: PostFilter, name: 'post_filter'},
+            {path: '/post/category/:id?/', component: PostCategories, name: 'post_categories'},
+            {path: '/search-result/', component: SearchResult, name: 'search_result'},
         ]
     },
 
@@ -28,7 +35,8 @@ const routes = [
         component: AdminIndex, 
         name: 'myadmin',
         children: [
-            {path: 'doadmin', component: DoAdmin}
+            {path: '/myadmin/fuck/', component: BlogFeedAdmin},
+            {path: '/myadmin/post/:id/', component: DetailAdmin, name: 'detail'},
         ]
     },
 ]

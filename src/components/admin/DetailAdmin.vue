@@ -1,5 +1,5 @@
 <template>
     <div>
-        <p>My name is DoAdmin.vue</p>
+        <p>Hello world</p>
     </div>
 </template>

@@ -4,10 +4,23 @@ const state = {
     posts: [],
     post: {},
     categories: [],
-    category: []
+    category: [],
+    search_result: [],
+    user_title: ''
+
 }
 
 const actions = {
+    SEARCH_RESULT: ({commit}, title) => {
+       return axios.get('/api/posts/search/?search=' + title)
+        .then(response => {
+            commit('USER_TITLE', title)
+            commit('SEARCH_RESULT', response.data)
+        })
+        .catch(error => {
+            console.log('something went wrong', error)
+        })
+    },
     GET_POST: ({ commit }, id) => {
         axios.get('/api/post/' + id + '/')
         .then(response => {
@@ -50,6 +63,12 @@ const actions = {
 }
 
 const mutations = {
+    USER_TITLE: (state, title) => {
+        state.user_title = title
+    },
+    SEARCH_RESULT: (state, posts) => {
+        state.search_result = posts
+    },
     GET_POSTS: (state, posts) => {
         state.posts = posts
     },
@@ -65,10 +84,12 @@ const mutations = {
 }
 
 const getters = {
+    user_title: state => state.user_title,
     posts: state => state.posts,
     post: state => state.post,
     categories: state => state.categories,
     category: state => state.category,
+    search_result: state => state.search_result,
 }
 
 export default {
